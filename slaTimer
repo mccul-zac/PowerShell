@@ -1,0 +1,25 @@
+# A gentle reminder to check the alert board while investigating other tickets...
+
+function slaTimer {
+    [System.Reflection.Assembly]::LoadWithPartialName(“System.Diagnostics”)
+    $timer = new-object system.diagnostics.stopwatch
+    $wshell = New-Object -ComObject Wscript.Shell
+    $myalert = $wshell.Popup("Refresh the Board",0,"Alert",0x1) 
+    if ($myalert -eq 1) 
+    {
+        $timer.start()
+        Start-Sleep -s 719
+        while ($timer.IsRunning) 
+        {
+            if ($timer.elapsed.minutes -eq 12)
+            {
+                return popUpTimer
+                'Restarting'
+            }
+        }        
+    }
+    else 
+    {
+        break
+    }
+}
