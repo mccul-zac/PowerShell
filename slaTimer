@@ -1,4 +1,8 @@
 # A gentle reminder to check the alert board while investigating other tickets...
+# Add function to profile:
+### New-Item -Path $profile -ItemType File -Force
+
+
 
 function slaTimer {
     [System.Reflection.Assembly]::LoadWithPartialName(“System.Diagnostics”)
